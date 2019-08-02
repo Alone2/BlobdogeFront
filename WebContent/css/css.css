@@ -1,0 +1,271 @@
+.transparentClass {
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    margin: 0;
+}
+
+.pointerStyle {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    cursor: pointer;
+}
+
+.banner {
+    border-width: 1px;
+    border-style: none none solid none;
+    overflow: hidden;
+}
+
+.banner a {
+    float: left;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 30px;
+
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    cursor: pointer;
+}
+
+.banner titu {
+    float: left;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.banner a:hover {
+    /*animation-duration: 0.3s;
+    animation-name: changeColorGray;*/
+}
+.banner a.logIn {
+    float: right;
+    font-size: 30.5px;
+    padding: 15px 16px 5px 16px;
+}
+
+.banner a.logIn:hover {
+    /*animation-duration: 0.3s;
+    animation-name: changeColorRed;*/
+}
+
+.banner a.logOut {
+    float: right;
+    font-size: 30.5px;
+    padding: 15px 16px 5px 16px;
+}
+
+.banner a.logOut:hover {
+}
+
+.gradient {
+    height:10px;
+    position: fixed;
+    z-index: 1;
+}
+
+#bottomText {
+    text-align: right;
+    font-size: 13px
+}
+
+#theRealStuff {
+    width: 60%;
+}
+
+.blobimage {
+    width: 100%;  
+}
+
+#news {
+    font-size: small;
+    float: right;
+    width: 34%;
+}
+
+#news small {
+}
+
+.content {
+    padding: 15px;
+    /*border-radius: 5px;*/
+    border: solid;
+    border-width: 0px 0px 1px 0px;
+}
+
+.content:hover {
+}
+
+.write {
+    border-width: 0px 0px 1px 0px;
+    /*border-radius: 3px 3px 0px 0px;*/
+}
+
+.writeClick {
+	padding: 15px 0px;
+}
+
+.write:hover {
+
+}
+
+#blobNews {
+}
+
+#blobNews:hover {
+}
+
+#contentHolder {
+    overflow: auto;
+    padding:16px
+}
+
+.nodisplay {
+    position: fixed;
+	display: none;
+	z-index: 2;
+}
+
+#alertBox {
+    position: fixed;
+	display: none;
+	z-index: 2;
+	
+	text-align: center;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 20px;
+	width: 300px;
+    border: 1px;
+    border-style: solid;
+    border-top-width: 0px;
+    border-left-width: 0px;
+    border-right-width: 0px;
+    border-radius: 5px;
+	margin: 10% auto;
+	left: 0;
+	right: 0;	
+}
+
+#alertBoxContent {
+    padding: 30px 20px 20px 20px;
+}
+
+#alertBoxClose {
+    float: right;
+    cursor: pointer;
+}
+
+#blobInput {
+    border: none;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 20px;
+    outline: none;
+    overflow:auto;
+    resize: none;
+    padding: 0px;
+}
+
+#sendImg {
+    float: right;
+    padding: 3px 0px 2px;
+}
+
+#theme_switcher {
+    padding: 18px 14px 10px;
+    float: right;
+}
+
+input {
+    border: 0px;
+    border-style: solid;
+    border-bottom-width: 1px;
+    border-radius: 1px;
+}
+
+.date {
+    float: right;
+    font-size: xx-small;
+}
+
+#blobs {
+}
+
+#cross {
+    position: fixed;
+    bottom: 500;
+    right: 500;
+    cursor: pointer;
+}
+
+.name {
+    cursor: pointer;
+}
+
+.name:hover {
+    text-decoration: underline;
+}
+
+div.sticky {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    padding: 10px;
+    margin: 0% 30%;
+    border-radius: 30px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.loginFont {
+	padding: 15px 16px;
+    cursor: pointer;
+    border-style: solid;
+  	border-width: 0px 0.5px 0px 0px;
+}
+
+.loginFontSelected {
+	padding: 15px 16px 16px 16px;	
+}
+
+.center {
+	text-align: center;
+}
+
+.uInput {
+	border: 5px;
+	border-style: solid;
+	border-radius: 5px;
+	padding: 4px;
+}
+
+.dogeInput {
+	text-align: right;
+}
+
+.dogeSymbol {
+	border: 3px;
+	border-style: solid;
+	border-radius: 5px;
+	padding: 4px;
+}
+
+.dogeSymbol input {
+	border: none;
+}
+
+.login {
+	padding: 7px 32px;
+	border: 2px;
+    border-style: none none solid none;
+    border-radius: 1px;
+    cursor: pointer;
+}
