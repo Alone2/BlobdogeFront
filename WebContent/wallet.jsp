@@ -1,35 +1,9 @@
 <%@page import="org.apache.jasper.tagplugins.jstl.core.ForEach"%>
-<%@page import="ch.blobber.connection.BlobdogeConnection"%>
+<%@page import="ch.blobber.blobdogefront.connection.BlobdogeConnection"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
-    
-<% 
-	Cookie ck[]=request.getCookies(); 
-	try {
-		if (ck.length <= 0) {
-			response.sendRedirect("welcomeLogin.jsp");
-			return;
-		}
-	} catch (Exception e) {
-		response.sendRedirect("welcomeLogin.jsp");
-		return;
-	}
-	
-	String token = new String();
-	for(int i=0;i<ck.length;i++){  
-	 	if (ck[i].getName().equals("token")) {
-	 		token = ck[i].getValue();
-	 	}
-	}
-	BlobdogeConnection b = new BlobdogeConnection(token);
-	if (!b.getInfo())
-		response.sendRedirect("welcomeLogin.jsp");
-	
-	String balance = b.balance;
-	String address = b.address;
-	
-%>
+
+<%@ page errorPage = "error" %>
 
 <!DOCTYPE html>
 <html>
@@ -53,7 +27,7 @@
 
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     <link href="css/css.css" rel="stylesheet">
-    <link href="css/light.css" rel="stylesheet">
+	<link href='css/${theme}.css' rel="stylesheet">
     <link href="" rel="stylesheet">
 
     <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
@@ -65,6 +39,9 @@
     window.onload = function (event) {
         contentMoveOn();
         lookMoveOn();
+        changeButtonsTheme("${theme}");
+        ${errorJs}
+        ${js}
     }
     </script>
     
@@ -102,15 +79,15 @@
                 <div class="content contentNoHover">
                 	<div id="tab1" class="center">
                 		 <b>Your Balance: </b>
-                		 <%= balance %> Ð
-                		 <br><br><img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=<%= address %>" alt="" />
+                		 ${balance} Ð
+                		 <br><br><img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${address}" alt="" />
                 		 <br><b>Dogecoin Address:</b><br>
-                		 <small><%= address %></small><br><br><br>
+                		 <small>${address}</small><br><br><br>
                 		 Transaction time takes about 1 minute. Reload the page 1 minute after you sent dogecoin to this address to see if your transaction was successful. (Address changes as soon as the transaction starts processing)
                 	</div>
                 	<div id="tab2" class="nodisplay center">
                 		<b>Your Balance: </b><br>
-                		<b><%= balance %> Ð</b>
+                		<b>${balance} Ð</b>
                 		<br><br>
                 		<form action="/action_page.php" method="post">
 						<span class="dogeSymbol"><small>Ð</small> <input type="number" class="dogeInput" name="amount" placeholder="amount"></span>
@@ -122,7 +99,9 @@
                 	</div>
                 	<div id="tab3" class="nodisplay center">
                 		<br>
-						<input type="button" class="login logout" value="logout">
+                		<form method="get" action="./logout">
+							<input type="submit" class="login logout" value="logout">
+						</form>
 						<br><br>
 						My created links:
                 	</div>

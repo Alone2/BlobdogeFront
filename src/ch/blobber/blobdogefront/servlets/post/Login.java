@@ -1,4 +1,4 @@
-package ch.blobber.servlets;
+package ch.blobber.blobdogefront.servlets.post;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -9,10 +9,11 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.json.JSONObject;
 
-import ch.blobber.connection.BlobdogeConnection;
+import ch.blobber.blobdogefront.connection.BlobdogeConnection;
 
 /**
  * Servlet implementation class login
@@ -23,13 +24,15 @@ public class Login extends HttpServlet {
 	public void doPost(HttpServletRequest req, HttpServletResponse res) throws IOException {
 		String uname = req.getParameter("uname");
 		String passwd = req.getParameter("passwd");
+		String redirect = req.getParameter("redirectError");
+		String redirect2 = req.getParameter("redirectSuccess");
 		
-		if (uname == null || passwd == null) {
+		if (uname == null || passwd == null || redirect == null) {
 			return;
 		}
 		
 		if (uname.equals("") || passwd.equals("")) {
-			this.error(res, "welcomeLogin.jsp", "Empty-Password-Or-Username");
+			this.error(req, res, redirect, "Empty password or username");
 			return;
 		}
 				
@@ -39,26 +42,29 @@ public class Login extends HttpServlet {
 			out = b.login(uname, passwd);
 		} catch (Exception e) {
 			e.printStackTrace();
-			this.error(res, "welcomeLogin.jsp", "Server-Error");
+			this.error(req, res, redirect, "Server-Error");
 			return;
 		}
 			
 		if (!out.getString("error").equals("none")) {
-			this.error(res, "welcomeLogin.jsp", out.getString("error"));
+			this.error(req, res, redirect, out.getString("error"));
 			return;
 		}
 		//out.getString("token");
 		Cookie c = new Cookie("token", out.getString("token"));
 		res.addCookie(c);
 		
-		res.sendRedirect("wallet.jsp");
+		res.sendRedirect(redirect2);
 		
 	}
 	
-	protected void error(HttpServletResponse r, String redirect, String errorMessage) throws IOException {
-		Cookie c = new Cookie("error", errorMessage);
-		r.addCookie(c);
-		r.sendRedirect(redirect);
+	protected void error(HttpServletRequest req, HttpServletResponse res, String redirect, String errorMessage) throws IOException {
+		HttpSession session = req.getSession();
+		session.setAttribute("error", errorMessage);
+		
+		//Cookie c = new Cookie("error", errorMessage);
+		//r.addCookie(c);
+		res.sendRedirect(redirect);
 	}
 
 }

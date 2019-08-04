@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
-<%@ page errorPage = "error" %>
+<%@ page isErrorPage = "true" %>
 
 <!DOCTYPE html>
 <html>
@@ -72,54 +71,35 @@
         <div id="theRealStuff">
             <div id="loginStuff">
                 <div id="login" class="write content writeClick" style="font-size:medium">
-                    <b onclick="showTab2()" id="tab1Font" class="loginFont loginFontSelected">Move</b><b onclick="showTab1()" id="tab2Font" class="loginFont">Keep on Blobber</b>
+                    <b id="tab1Font" class="loginFont loginFontSelected">Error</b>
                 </div>
                 <div class="content contentNoHover">
                 	<div id="tab1" class="center">
-                		<br>
-                		<b>You can claim: </b>
-                		 ${balance} Ð<br><br>
-                		Move to a Dogecoin address.
-                		<br><br>
-                		<form action="sendToAddress" method="post">
-                		<input type="text" class="nodisplay" name="code" value="${code}">
-						<input type="text" class="uInput" name="address" placeholder="address">
-						<br><br>
-						<input type="submit" class="login" value="claim">
-						</form>
-                	</div>
-                	<div id="tab2" class="nodisplay center">
-                		<br>
-						Keep on my Blobber wallet.<br>
-						
-						<div class="${signedInClass} }">
-							You are signed in! Claim your coins!
-							<br><br>
-							<form action="/sendToMyself">
-								<input type="text" class="nodisplay" name="code" value="${code}">
-								<input type="button" class="login register" value="claim">
-							</form>
-						</div>		
-						<div class="${signedOutClass}">
-							Sign in to transfer the coins to your Blobber Account.
-							<br><br>
-							<form action="login" method="post">
-								<input type="text" class="nodisplay" name="redirectError" value="${requestedURL}">
-								<input type="text" class="nodisplay" name="redirectSuccess" value="${requestedURL}">
-								<input type="text" class="uInput" name="uname"
-									placeholder="username"> <br>
-								<br> <input type="password" class="uInput" name="passwd"
-									placeholder="password"> <br>
-								<br> <input type="submit" class="login" value=login>
-							</form>
-							<br><br><br>
-							No account? Register now!
-							<form action="home" method="get">
-								<br>
-								<input type="submit" class="login register" value="register">
-							</form>
-						</div>
-						
+                		 <b>Error: <%=response.getStatus() %></b><br>
+                		 <% String message = "";
+                		 switch (response.getStatus()) {
+                		 	case 404:
+                		 		message = "File not found";
+                		 		break;
+                		 	case 500:
+                		 		message = "Server Error";
+                		 		break;
+                		 	case 400:
+                		 		message = "Bad request";
+                		 		break;		
+                		 	case 405:
+                		 		message = "Method Not Allowed";
+                		 		break;
+                		 }	
+                		 %>
+                		 <%=message %>
+                		 <br><br><br>
+                		 <form method="get" action="./home">
+                		 	<input type="submit" class="login register" value="Return to Homescreen">
+                		 </form>
+                		 <br><br><br><br><br>
+                		 Kontakt: admin@bundr.net
+                		   
                 	</div>
                 <br></div>
             </div>

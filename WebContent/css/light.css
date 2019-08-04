@@ -133,6 +133,31 @@ div.sticky {
     color: white;
 }
 
+.uInput {
+    border-color: rgb(251, 251, 251);
+}
+
+.dogeSymbol {
+	background-color: rgb(251, 251, 251);
+	border-color: rgb(251, 251, 251);
+}
+
+.login {
+	background-color: 	rgb(70, 185, 128);
+	border-color: rgb(56, 148, 102);
+	color: white;
+}
+
+.register {
+	background-color: rgb(70, 128, 185);
+	border-color: rgb(56, 102, 148);
+}
+
+.logout {
+	background-color: rgb(185, 70, 70);
+	border-color: rgb(172, 83, 83);
+}
+
 .loginFont {
     background-color: rgb(230, 230, 230);
     border-color: rgb(220, 220, 220);

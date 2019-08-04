@@ -143,19 +143,19 @@ function set_cookie_theme(defaultMode) {
     for (i = 0; i < split.length; i++) {
         theme = split[i].split("=");
         if (theme[0] == "theme") {
-            change_theme(theme[1]);
-            changeButtonsTheme(theme[1]);
+            //change_theme(theme[1]);
+            //changeButtonsTheme(theme[1]);
             doDefault = false;
         }
         // some error stuff (sorry)
-        if (theme[0] == "error") {
+        /*if (theme[0] == "error") {
         	textAlertBoxDelay(theme[1], 2500);
         	//delete Cookie
         	document.cookie = 'error=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
-        }
+        }*/
     }
     if (doDefault) {
-    	change_theme(defaultMode, false);
+    	//change_theme(defaultMode, false);
     	changeButtonsTheme(defaultMode);
     }
 }

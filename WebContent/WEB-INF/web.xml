@@ -5,4 +5,48 @@
 	id="WebApp_ID" version="4.0">
 	<display-name>BlobdogeFront</display-name>
 
+	<welcome-file-list>
+		<welcome-file>home</welcome-file>
+	</welcome-file-list> 
+
+	<servlet>
+		<servlet-name>login</servlet-name>
+		<servlet-class>ch.blobber.blobdogefront.servlets.post.Login</servlet-class>
+	</servlet>
+
+	<servlet>
+		<servlet-name>register</servlet-name>
+		<servlet-class>ch.blobber.blobdogefront.servlets.post.Register</servlet-class>
+	</servlet>
+	
+	<servlet>
+		<servlet-name>home</servlet-name>
+		<servlet-class>ch.blobber.blobdogefront.servlets.visual.Home</servlet-class>
+	</servlet>
+	
+	<servlet>
+		<servlet-name>claim</servlet-name>
+		<servlet-class>ch.blobber.blobdogefront.servlets.visual.Claim</servlet-class>
+	</servlet>
+	
+	<servlet>
+		<servlet-name>logout</servlet-name>
+		<servlet-class>ch.blobber.blobdogefront.servlets.post.Logout</servlet-class>
+	</servlet>
+	
+	<servlet>
+		<servlet-name>sendToAddress</servlet-name>
+		<servlet-class>ch.blobber.blobdogefront.servlets.post.SendToAddress</servlet-class>
+	</servlet>
+
+	
+	<filter>
+    	<filter-name>StartupFilter</filter-name>
+    	<filter-class>ch.blobber.blobdogefront.filter.StartupFilter</filter-class>
+	</filter>
+
+	<error-page>
+		<location>/error</location>
+	</error-page>
+
 </web-app>

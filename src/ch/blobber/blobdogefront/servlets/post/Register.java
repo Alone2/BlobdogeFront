@@ -1,4 +1,4 @@
-package ch.blobber.servlets;
+package ch.blobber.blobdogefront.servlets.post;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.json.JSONObject;
 
-import ch.blobber.connection.BlobdogeConnection;
+import ch.blobber.blobdogefront.connection.BlobdogeConnection;
 
 /**
  * Servlet implementation class Register
@@ -28,7 +28,7 @@ public class Register extends Login {
 		}
 		
 		if (!passwd.equals(passwd2)) {
-			this.error(res, "welcomeLogin.jsp", "Passwords-do-not-match.");
+			this.error(req, res, "whome", "Passwords do not match.");
 			return;
 		}
 		
@@ -38,16 +38,16 @@ public class Register extends Login {
 			out = b.register(uname, passwd);
 		} catch (Exception e) {
 			e.printStackTrace();
-			this.error(res, "welcomeLogin.jsp", "Server-Error");
+			this.error(req, res, "home", "Server Error");
 			return;
 		}
 			
 		if (!out.getString("error").equals("none")) {
-			this.error(res, "welcomeLogin.jsp", out.getString("error"));
+			this.error(req, res, "home", out.getString("error"));
 			return;
 		}
 		
-		this.error(res, "welcomeLogin.jsp", "Success!-You-can-log-in!");
+		this.error(req, res, "home", "Success! You can now log in!");
 		
 	}
 
