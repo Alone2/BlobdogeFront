@@ -29,14 +29,17 @@
     <link href="" rel="stylesheet">
 
     <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
-
+	<script src="js/instascan.min.js"></script>
+	
     <script src="js/content.js"></script>
     <script src="js/look.js"></script>
     <script src="js/tabs.js"></script>
+    <script src="js/qr-handler.js"></script>
     <script type="text/javascript">
     window.onload = function (event) {
         contentMoveOn();
         lookMoveOn();
+        qrMoveOn();
         changeButtonsTheme("${theme}");
         ${errorJs}
         ${js}
@@ -81,25 +84,30 @@
                 		 ${balance} Ð<br><br>
                 		Move to a Dogecoin address.
                 		<br><br>
+                		<video id="preview" class="nodisplay"></video>
+                		<input type="button" class="login register nodisplay" id="camButton" class="nodisplay" onclick="CamOn()" value="scan qr-code with camera">
+                		<br><br>
                 		<form action="sendToAddress" method="post">
                 		<input type="text" class="nodisplay" name="code" value="${code}">
-						<input type="text" class="uInput" name="address" placeholder="address">
+						<input type="text" class="uInput long" id="codeInput" name="address" placeholder="address">
 						<br><br>
 						<input type="submit" class="login" value="claim">
 						</form>
                 	</div>
                 	<div id="tab2" class="nodisplay center">
                 		<br>
+                		<b>You can claim: </b>
+                		 ${balance} Ð<br><br>
 						Keep on my Blobber wallet.<br>
 						
 						<div class="${signedInClass} }">
 							You are signed in! Claim your coins!
 							<br><br>
-							<form action="/sendToMyself">
+							<form method="post" action="sendToMyself">
 								<input type="text" class="nodisplay" name="code" value="${code}">
-								<input type="button" class="login register" value="claim">
+								<input type="submit" class="login register" value="claim">
 							</form>
-						</div>		
+						</div>
 						<div class="${signedOutClass}">
 							Sign in to transfer the coins to your Blobber Account.
 							<br><br>

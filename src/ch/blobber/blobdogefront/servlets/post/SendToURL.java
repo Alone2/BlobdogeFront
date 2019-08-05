@@ -19,22 +19,28 @@ import ch.blobber.blobdogefront.connection.CookieConnection;
 /**
  * Servlet implementation class login
  */
-@WebServlet("/sendToMyself")
-public class SendToMyself extends Login {
+@WebServlet("/sendToURL")
+public class SendToURL extends Login {
+	
+	
+	
+	//This here istead of Link.java
+	
 	
 	public void doPost(HttpServletRequest req, HttpServletResponse res) throws IOException {
-		String code = req.getParameter("code");
-		
-		String token = CookieConnection.getCookie("token", req);
-		
-		if (code == null || "".equals(token)) {
+		String amount = req.getParameter("amount");
+				
+		if (amount == null || "".equals(amount)) {
+			this.error(req, res, "wallet", "Field empty");
 			return;
 		}
+		
+		String token = CookieConnection.getCookie("token", req);
 				
 		BlobdogeConnection b = new BlobdogeConnection(token);
 		JSONObject out;
 		try {
-			out = b.sendToMyself(code);
+			out = b.sendToURL(amount);
 		} catch (Exception e) {
 			e.printStackTrace();
 			this.error(req, res, "wallet", "Server-Error");
@@ -46,8 +52,16 @@ public class SendToMyself extends Login {
 			return;
 		}
 		
-		this.error(req, res, "wallet", "Success!");
+		HttpSession session = req.getSession();
 		
+		String newCode = out.getString("code");
+		Float balance = out.getFloat("balance");
+		
+		session.setAttribute("code", newCode);
+		session.setAttribute("balance", balance);
+		
+		res.sendRedirect("link");
+								
 	}
-	
+
 }

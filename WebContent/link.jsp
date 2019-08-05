@@ -1,8 +1,6 @@
-<%@page import="org.apache.jasper.tagplugins.jstl.core.ForEach"%>
-<%@page import="ch.blobber.blobdogefront.connection.BlobdogeConnection"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+    
 <%@ page errorPage = "error" %>
 
 <!DOCTYPE html>
@@ -74,37 +72,29 @@
         <div id="theRealStuff">
             <div id="loginStuff">
                 <div id="login" class="write content writeClick" style="font-size:medium">
-                    <b onclick="showTab31()" id="tab1Font" class="loginFont loginFontSelected">Upload</b><b onclick="showTab32()" id="tab2Font" class="loginFont">Send</b><b onclick="showTab33()" id="tab3Font" class="loginFont">Other</b>
+                    <b id="tab1Font" class="loginFont loginFontSelected">Link</b>
                 </div>
                 <div class="content contentNoHover">
                 	<div id="tab1" class="center">
-                		 <b>Your Balance: </b><br>
-                		 <b>${balance} Ð</b>
-                		 <br><br><img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${address}" alt="" />
-                		 <br><b>Dogecoin Address:</b><br>
-                		 <small>${address}</small><br><br><br>
-                		 Transaction time takes about 1 minute. Reload the page 1 minute after you sent dogecoin to this address to see if your transaction was successful. (Address changes as soon as the transaction starts processing)
-                	</div>
-                	<div id="tab2" class="nodisplay center">
-                		<b>Your Balance: </b><br>
-                		<b>${balance} Ð</b>
-                		<br><br>
-                		Send Dogecoins to someone via Blobber link.<br>
-                		(1Ð transaction fee when not recieved with blobber)
-                		<br><br>
-                		<form action="sendToURL" method="post">
-						<span class="dogeSymbol"><small>Ð</small> <input type="number" class="dogeInput" name="amount" min=1 placeholder="amount"></span>
-						<br><br>
-						<input type="submit" class="login register" value="send">
-						</form>
-                	</div>
-                	<div id="tab3" class="nodisplay center">
-                		<br>
-                		<form method="post" action="./logout">
-							<input type="submit" class="login logout" value="logout">
-						</form>
-						<br><br>
-						My unclaimed links:
+              			 <br>
+              			 <b>${balance} Ð</b>
+              			 <br><br>
+              			 Send the following Link to the Person you want to send your Dogecoins to. 
+              			 Be aware that <b>everyone</b> who has this link is able to claim the Dogecoins.
+              			 <br><br>
+                		 <b>Link:</b><br><br>
+                		 <input type="text" class="uInput long" value="${link}" readonly>
+                		 <br><br><br>
+						 <form method="get" action="https://api.whatsapp.com/send" target="_blank">
+						    <input type="text" class="nodisplay" name="text" value="${link}">
+                		 	<input type="submit" class="login" value="Share on Whatsapp">
+                		 </form>
+                		 <br><br><br><br>
+                		 <form method="get" action="./wallet">
+                		 	<input type="submit" class="login register" value="Back to Wallet">
+                		 </form>
+                		 <br><br>
+                		   
                 	</div>
                 <br></div>
             </div>

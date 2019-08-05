@@ -229,7 +229,7 @@ div.sticky {
 	padding: 15px 16px;
     cursor: pointer;
     border-style: solid;
-  	border-width: 0px 0.5px 0px 0px;
+  	border-width: 0px 1px 0px 0px;
 }
 
 .loginFontSelected {
@@ -260,6 +260,7 @@ div.sticky {
 
 .dogeSymbol input {
 	border: none;
+	width: 80px;
 }
 
 .login {
@@ -268,4 +269,9 @@ div.sticky {
     border-style: none none solid none;
     border-radius: 1px;
     cursor: pointer;
+}
+
+.long {
+	width: 290px;
+	font-size: 14px;
 }

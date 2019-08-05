@@ -16,10 +16,16 @@ import ch.blobber.blobdogefront.connection.PropertiesConnection;
  */
 @WebServlet("/home")
 public class Home extends HttpServlet {
+	HttpServletRequest request;
+	HttpServletResponse response;
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		this.request = request;
+		this.response = response;
+		
 		String theme = getTheme(request.getCookies(), PropertiesConnection.getParameter(request, "defaultTheme"));
 		String errorJs = getErrorJS(request.getSession());
+		
 		StringBuffer reqUrl = request.getRequestURL();
 		if (request.getQueryString() != null) {
 			reqUrl.append("?").append(request.getQueryString());
@@ -29,10 +35,10 @@ public class Home extends HttpServlet {
 		request.setAttribute("errorJs", errorJs);
 		request.setAttribute("theme", theme);
 		request.setAttribute("requestedURL", url);
-		goOn(request, response);
+		goOn();
 	}
 	
-	protected void goOn(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void goOn() throws ServletException, IOException {
 		request.setAttribute("success", "wallet");
         request.getRequestDispatcher("welcomeLogin.jsp").forward(request, response);
 	}
@@ -62,6 +68,24 @@ public class Home extends HttpServlet {
 		if (error != null && !error.equals(""))
 			errorJs = "textAlertBoxDelay('" + error + "', 2500);";
 		return errorJs;
+	}
+	
+	protected void setError(String error, String url) throws ServletException, IOException {
+		/*String errorJs = "textAlertBoxDelay('" + error + "', 2500);";
+		request.setAttribute("errorJs", errorJs);
+		
+		request.getRequestDispatcher(url).forward(request, response);*/
+		
+		setErrorReq(error, url, request, response);
+
+	}
+	
+	protected void setErrorReq(String error, String url, HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+		HttpSession session = req.getSession();
+		session.setAttribute("error", error);
+				
+		res.sendRedirect(url);
+
 	}
 
 }

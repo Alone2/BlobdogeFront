@@ -158,7 +158,7 @@ public class BlobdogeConnection {
 		a.put(code);
 
 		String out;
-		out = this.get("auth", a);
+		out = this.get("sendAddress", a);
 		JSONObject o = new JSONObject(out);
 
 		return o;
@@ -173,7 +173,22 @@ public class BlobdogeConnection {
 		a.put(code);
 
 		String out;
-		out = this.get("auth", a);
+		out = this.get("sendMyself", a);
+		JSONObject o = new JSONObject(out);
+
+		return o;
+	}
+	
+	public JSONObject sendToURL(String amount) throws Exception {
+		JSONArray a = new JSONArray();
+		a.put("token");
+		a.put(token);
+
+		a.put("amount");
+		a.put(amount);
+
+		String out;
+		out = this.get("sendURL", a);
 		JSONObject o = new JSONObject(out);
 
 		return o;

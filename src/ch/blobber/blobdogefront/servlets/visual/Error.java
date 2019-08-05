@@ -16,7 +16,7 @@ import javax.servlet.http.HttpSession;
 public class Error extends Home {
 	
 	@Override
-	protected void goOn(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void goOn() throws ServletException, IOException {
         request.getRequestDispatcher("error.jsp").forward(request, response);
 	}
 

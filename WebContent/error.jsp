@@ -94,7 +94,7 @@
                 		 %>
                 		 <%=message %>
                 		 <br><br><br>
-                		 <form method="get" action="./home">
+                		 <form method="get" action="./">
                 		 	<input type="submit" class="login register" value="Return to Homescreen">
                 		 </form>
                 		 <br><br><br><br><br>

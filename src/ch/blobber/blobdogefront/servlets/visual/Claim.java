@@ -19,21 +19,21 @@ import ch.blobber.blobdogefront.connection.CookieConnection;
 public class Claim extends Home {
 
 	@Override
-	protected void goOn(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void goOn() throws ServletException, IOException {
 		String code = request.getParameter("code");
 		
 		if (code == null) {
-			response.sendRedirect("home");
+			setError("No Parameter", "wallet");
 			return;
 		}
 		
-		/*BlobdogeConnection b = new BlobdogeConnection("");
+		BlobdogeConnection b = new BlobdogeConnection("");
 		if (!b.getCodeInfo(code)) {
-			response.sendRedirect("home");
+			setError("Link doesn't exist", "wallet");
 			return;
 		}
 		
-		request.setAttribute("balance", b.balance);*/
+		request.setAttribute("balance", b.balance);
 		
 		// To Do: Check if User logged in (because "move to blobber")
 		String token = CookieConnection.getCookie("token", request);

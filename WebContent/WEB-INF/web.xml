@@ -6,8 +6,18 @@
 	<display-name>BlobdogeFront</display-name>
 
 	<welcome-file-list>
-		<welcome-file>home</welcome-file>
+		<welcome-file>wallet</welcome-file>
 	</welcome-file-list> 
+	
+	<security-constraint>
+	<web-resource-collection>
+	<web-resource-name>Web</web-resource-name>
+	<url-pattern>/*</url-pattern>
+	</web-resource-collection>
+	<user-data-constraint>
+	<transport-guarantee>CONFIDENTIAL</transport-guarantee>
+	</user-data-constraint>
+	</security-constraint>
 
 	<servlet>
 		<servlet-name>login</servlet-name>
@@ -30,6 +40,11 @@
 	</servlet>
 	
 	<servlet>
+		<servlet-name>link</servlet-name>
+		<servlet-class>ch.blobber.blobdogefront.servlets.visual.Link</servlet-class>
+	</servlet>
+	
+	<servlet>
 		<servlet-name>logout</servlet-name>
 		<servlet-class>ch.blobber.blobdogefront.servlets.post.Logout</servlet-class>
 	</servlet>
@@ -37,6 +52,11 @@
 	<servlet>
 		<servlet-name>sendToAddress</servlet-name>
 		<servlet-class>ch.blobber.blobdogefront.servlets.post.SendToAddress</servlet-class>
+	</servlet>
+	
+	<servlet>
+		<servlet-name>sendToURL</servlet-name>
+		<servlet-class>ch.blobber.blobdogefront.servlets.post.SendToURL</servlet-class>
 	</servlet>
 
 	

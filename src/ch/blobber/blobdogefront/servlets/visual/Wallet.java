@@ -18,15 +18,15 @@ import ch.blobber.blobdogefront.connection.BlobdogeConnection;
 public class Wallet extends Home  {
 
 	@Override
-	protected void goOn(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void goOn() throws ServletException, IOException {
 		Cookie ck[]=request.getCookies(); 
 		try {
 			if (ck.length <= 0) {
-				response.sendRedirect("home");
+				setError("", "home");
 				return;
 			}
 		} catch (Exception e) {
-			response.sendRedirect("home");
+			setError("", "home");
 			return;
 		}
 		
@@ -38,15 +38,16 @@ public class Wallet extends Home  {
 		}
 		
 		if (token.equals("")) {
-			response.sendRedirect("home");
+			setError("", "home");
 			return;
 		}
 		
 		BlobdogeConnection b = new BlobdogeConnection(token);
 		if (!b.getInfo()) {
-			response.sendRedirect("home");
+			System.out.println("upps");
+			setError("Invalid Session", "home");
+			return;
 		}
-		
 		request.setAttribute("balance", b.balance);
 		request.setAttribute("address", b.address);
 		
