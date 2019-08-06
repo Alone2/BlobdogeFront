@@ -9,7 +9,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.json.JSONArray;
+
 import ch.blobber.blobdogefront.connection.BlobdogeConnection;
+import ch.blobber.blobdogefront.connection.PropertiesConnection;
 
 /**
  * Servlet implementation class Home
@@ -50,9 +53,19 @@ public class Wallet extends Home  {
 		}
 		request.setAttribute("balance", b.balance);
 		request.setAttribute("address", b.address);
+		request.setAttribute("urls", createURLs(b.codes));
 		
         request.getRequestDispatcher("wallet.jsp").forward(request, response);
         
+	}
+	
+	public String createURLs(JSONArray codes) {
+		StringBuilder str = new StringBuilder();
+		for (int i = 0; i < codes.length(); i++) {
+			str.append(PropertiesConnection.getParameter(request, "claimUrl") + codes.get(i) + "<br><br>");
+		}
+		
+		return str.toString();
 	}
 
 }

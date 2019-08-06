@@ -16,6 +16,7 @@ public class BlobdogeConnection {
 	String token;
 	public String balance;
 	public String address;
+	public JSONArray codes;
 
 	public BlobdogeConnection(String token) {
 		this.token = token;
@@ -123,6 +124,7 @@ public class BlobdogeConnection {
 		try {
 			balance = String.valueOf(out.getFloat("balance"));
 			address = out.getString("address");
+			codes = out.getJSONArray("codes");
 		} catch (Exception e) {
 			return false;
 		}

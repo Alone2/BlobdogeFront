@@ -104,7 +104,8 @@
 							<input type="submit" class="login logout" value="logout">
 						</form>
 						<br><br>
-						My unclaimed links:
+						My unclaimed links:<br><br>
+						${urls}
                 	</div>
                 <br></div>
             </div>

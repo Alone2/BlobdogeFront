@@ -3,8 +3,6 @@ package ch.blobber.blobdogefront.connection;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 
-import sun.security.pkcs11.wrapper.CK_AES_CTR_PARAMS;
-
 public class CookieConnection {
 	public static String getCookie(String cookie, HttpServletRequest req) {
 		String token = "";
