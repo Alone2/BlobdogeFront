@@ -275,3 +275,12 @@ div.sticky {
 	width: 290px;
 	font-size: 14px;
 }
+
+.copyHolder {
+    width:100%;
+    text-align: center;
+}
+
+.copyInput {
+    display: inline-block;
+}

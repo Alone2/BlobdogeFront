@@ -181,3 +181,9 @@ function GetURLParameter(sParam) {
     }
 }
 
+function copy() {
+	  var copyText = document.getElementById("outputInput");
+	  copyText.select();
+	  document.execCommand("copy");
+}
+

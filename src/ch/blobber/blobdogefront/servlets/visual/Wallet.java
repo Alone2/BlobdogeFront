@@ -62,10 +62,19 @@ public class Wallet extends Home  {
 	public String createURLs(JSONArray codes) {
 		StringBuilder str = new StringBuilder();
 		for (int i = 0; i < codes.length(); i++) {
-			str.append(PropertiesConnection.getParameter(request, "claimUrl") + codes.get(i) + "<br><br>");
+			String url = PropertiesConnection.getParameter(request, "claimUrl") + codes.get(i);
+			str.append("<div class=\"copyHolder\">\n" + 
+					"<input type=\"text\" id=\"outputInput\" class=\"uInput copyInput\" value=\"" + url  +"\" readonly>\n" + 
+					"<input type=\"button\" onclick=\"copy()\" class=\"login register copyInput\" value=\"copy\">\n" + 
+					"</div><br>");
 		}
 		
-		return str.toString();
+		String output = str.toString();
+		
+		if ("".equals(output))
+			output = "none";
+			
+		return output;
 	}
 
 }

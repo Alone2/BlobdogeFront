@@ -83,8 +83,11 @@
               			 Be aware that <b>everyone</b> who has this link is able to claim the Dogecoins.
               			 <br><br>
                 		 <b>Link:</b><br><br>
-                		 <input type="text" class="uInput long" value="${link}" readonly>
-                		 <br><br><br>
+                		 <div class="copyHolder">
+                		 	<input type="text" id="outputInput" class="uInput copyInput" value="${link}" readonly>
+                		 	<input type="button" onclick="copy()" class="login register copyInput" value="copy">
+                		 </div>
+                		 <br><br>
 						 <form method="get" action="https://api.whatsapp.com/send" target="_blank">
 						    <input type="text" class="nodisplay" name="text" value="${link}">
                 		 	<input type="submit" class="login" value="Share on Whatsapp">
@@ -93,7 +96,9 @@
                 		 <form method="get" action="./wallet">
                 		 	<input type="submit" class="login register" value="Back to Wallet">
                 		 </form>
-                		 <br><br>
+                		 <br>
+                		 You can view unclaimed links (created by you) under "other" in your wallet.
+                		 <br>
                 		   
                 	</div>
                 <br></div>
