@@ -19,4 +19,18 @@ public class PropertiesConnection {
 		}
 		return version;
 	}
+	
+	public static String getLangParameter(HttpServletRequest req, String para) {
+		Properties properties = new Properties();
+		String version = "";
+		try {
+			properties.load(req.getServletContext().getResourceAsStream("/WEB-INF/lang.properties"));
+			version = properties.getProperty(para);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return version;
+	}
+	
 }

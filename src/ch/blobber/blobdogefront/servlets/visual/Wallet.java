@@ -1,6 +1,8 @@
 package ch.blobber.blobdogefront.servlets.visual;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.Cookie;
@@ -59,22 +61,25 @@ public class Wallet extends Home  {
         
 	}
 	
-	public String createURLs(JSONArray codes) {
+	public ArrayList createURLs(JSONArray codes) {
 		StringBuilder str = new StringBuilder();
+		ArrayList<String> arr = new ArrayList<String>();
 		for (int i = 0; i < codes.length(); i++) {
 			String url = PropertiesConnection.getParameter(request, "claimUrl") + codes.get(i);
-			str.append("<div class=\"copyHolder\">\n" + 
+			 arr.add(url); 
+			/*str.append("<div class=\"copyHolder\">\n" + 
 					"<input type=\"text\" id=\"outputInput\" class=\"uInput copyInput\" value=\"" + url  +"\" readonly>\n" + 
 					"<input type=\"button\" onclick=\"copy()\" class=\"login register copyInput\" value=\"copy\">\n" + 
-					"</div><br>");
+					"</div><br>");*/
 		}
 		
-		String output = str.toString();
+		/*String output = str.toString();
 		
 		if ("".equals(output))
 			output = "none";
 			
-		return output;
+		return output;*/
+		 return arr;
 	}
 
 }

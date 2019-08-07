@@ -2,6 +2,7 @@
 <%@page import="ch.blobber.blobdogefront.connection.BlobdogeConnection"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <%@ page errorPage = "error" %>
 
@@ -104,8 +105,14 @@
 							<input type="submit" class="login logout" value="logout">
 						</form>
 						<br><br>
-						My unclaimed links:<br><br>
-						${urls}
+						My unclaimed links:<br><br>						
+						<c:forEach items="${urls}" var="link">
+						    <div class="copyHolder">
+								<input type="text" id="outputInput" class="uInput copyInput" value="${link}" readonly>
+								<input type="button" onclick="copy()" class="login register copyInput" value="copy">
+							</div><br>
+						</c:forEach>
+
                 	</div>
                 <br></div>
             </div>
