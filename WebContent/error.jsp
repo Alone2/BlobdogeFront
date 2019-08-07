@@ -16,22 +16,22 @@
     <meta http-equiv="Expires" content="0" />
     
     <title id="title">Blobber</title>
-    <link rel="icon" name="iconName" href="./img/icon.png" type="image/x-icon">
+    <link rel="icon" name="iconName" href="${serverUrl}img/icon.png" type="image/x-icon">
     <link rel="apple-touch-icon" name="iconName" sizes="57x57" href="./img/icon.png" />
     <link rel="apple-touch-icon" name="iconName" sizes="72x72" href="./img/icon.png" />
     <link rel="apple-touch-icon" name="iconName" sizes="114x114" href="./img/icon.png" />
     <link rel="apple-touch-icon" name="iconName" sizes="144x144" href="./img/icon.png" />
 
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-    <link href="css/css.css" rel="stylesheet">
-	<link href='css/${theme}.css' rel="stylesheet">
+    <link href="${serverUrl}css/css.css" rel="stylesheet">
+	<link href='${serverUrl}css/${theme}.css' rel="stylesheet">
     <link href="" rel="stylesheet">
 
     <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
 
-    <script src="js/content.js"></script>
-    <script src="js/look.js"></script>
-    <script src="js/tabs.js"></script>
+    <script src="${serverUrl}js/content.js"></script>
+    <script src="${serverUrl}js/look.js"></script>
+    <script src="${serverUrl}js/tabs.js"></script>
     <script type="text/javascript">
     window.onload = function (event) {
         contentMoveOn();
@@ -48,7 +48,7 @@
     <div id="banner" class="banner">
         <titu onclick="showBlobs(true)">Blobber <small style="font-size: 13px">alpha</small></titu>
 
-        <a id="theme_switcher" onclick="change_theme('dark');  location.reload();"><img id="theme_switcher_img" height="30px" src="img/light/change_theme.svg"></a>
+        <a id="theme_switcher" onclick="change_theme('dark');  location.reload();"><img id="theme_switcher_img" height="30px" src="${serverUrl}img/light/change_theme.svg"></a>
     </div>
     <div id="derGradient" class="gradient"></div>
 
@@ -75,27 +75,11 @@
                 </div>
                 <div class="content contentNoHover">
                 	<div id="tab1" class="center">
-                		 <b>Error: <%=response.getStatus() %></b><br>
-                		 <% String message = "";
-                		 switch (response.getStatus()) {
-                		 	case 404:
-                		 		message = "File not found";
-                		 		break;
-                		 	case 500:
-                		 		message = "Server Error";
-                		 		break;
-                		 	case 400:
-                		 		message = "Bad request";
-                		 		break;		
-                		 	case 405:
-                		 		message = "Method Not Allowed";
-                		 		break;
-                		 }	
-                		 %>
-                		 <%=message %>
+                		 <b>Error: ${status}</b><br>
+                		 ${message}
                 		 <br><br><br>
-                		 <form method="get" action="./">
-                		 	<input type="submit" class="login register" value="Return to Homescreen">
+                		 <form method="get" action="${serverUrl}">
+                		 	<input type="submit" class="login register" value="Back to Homescreen">
                 		 </form>
                 		 <br><br><br><br><br>
                 		 Kontakt: admin@bundr.net
