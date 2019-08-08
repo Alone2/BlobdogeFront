@@ -175,3 +175,7 @@ div.sticky {
 .loginFontSelected:hover {
 	background-color: rgb(26, 26, 26);
 }
+
+#qrcode {
+	border-color: rgb(255, 255, 255);	
+}

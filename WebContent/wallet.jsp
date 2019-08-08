@@ -36,6 +36,7 @@
     <script src="js/content.js"></script>
     <script src="js/look.js"></script>
     <script src="js/tabs.js"></script>
+    <script src="js/qrcode.js"></script>
     <script type="text/javascript">
     window.onload = function (event) {
         contentMoveOn();
@@ -81,7 +82,15 @@
                 	<div id="tab1" class="center">
                 		 <b>Your Balance: </b><br>
                 		 <b>${balance} Ð</b>
-                		 <br><br><img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${address}" alt="" />
+                		 <br><br>
+                		 <div class="center" id="qrcode"></div>
+						    <script type="text/javascript">
+						    new QRCode("qrcode", {
+						        text: "${address}",
+						        width: 150,
+						        height: 150,
+						    });
+							</script>
                 		 <br><b>Dogecoin Address:</b><br>
                 		 <small>${address}</small><br><br><br>
                 		 Transaction time takes about 1 minute. Reload the page 1 minute after you sent dogecoin to this address to see if your transaction was successful. (Address changes as soon as the transaction starts processing)
