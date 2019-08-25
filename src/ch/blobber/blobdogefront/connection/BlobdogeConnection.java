@@ -12,13 +12,15 @@ import java.io.*;
 
 public class BlobdogeConnection {
 	String output;
-	final String web_url = "http://localhost:8080/Blobdoge/";
+	String web_url;
 	String token;
 	public String balance;
 	public String address;
 	public JSONArray codes;
 
 	public BlobdogeConnection(String token) {
+		PropertiesConnection pcon = new PropertiesConnection();
+		web_url = pcon.getParameter("serverUrl");
 		this.token = token;
 	}
 

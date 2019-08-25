@@ -33,8 +33,10 @@ public class StartupFilter implements Filter {
 			throws IOException, ServletException {
 		HttpServletRequest req = (HttpServletRequest) request;
 		HttpServletResponse res = (HttpServletResponse) response;
+		
+		PropertiesConnection pcon = new PropertiesConnection();
 
-		String version = PropertiesConnection.getParameter(req, "version");
+		String version = pcon.getParameter("version");
 
 		Cookie[] cookies = req.getCookies();
 		String clientVersion = "home=0;";

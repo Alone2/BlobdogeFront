@@ -20,7 +20,7 @@ import ch.blobber.blobdogefront.connection.PropertiesConnection;
  * Servlet implementation class Home
  */
 @WebServlet("/wallet")
-public class Wallet extends Home  {
+public class Wallet extends Home {
 
 	@Override
 	protected void goOn() throws ServletException, IOException {
@@ -65,7 +65,8 @@ public class Wallet extends Home  {
 		StringBuilder str = new StringBuilder();
 		ArrayList<String> arr = new ArrayList<String>();
 		for (int i = 0; i < codes.length(); i++) {
-			String url = PropertiesConnection.getParameter(request, "claimUrl") + codes.get(i);
+			PropertiesConnection pcon = new PropertiesConnection();
+			String url = pcon.getParameter("claimUrl") + codes.get(i);
 			 arr.add(url); 
 			/*str.append("<div class=\"copyHolder\">\n" + 
 					"<input type=\"text\" id=\"outputInput\" class=\"uInput copyInput\" value=\"" + url  +"\" readonly>\n" + 
@@ -79,7 +80,7 @@ public class Wallet extends Home  {
 			output = "none";
 			
 		return output;*/
-		 return arr;
+		return arr;
 	}
 
 }

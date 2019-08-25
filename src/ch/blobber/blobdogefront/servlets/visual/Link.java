@@ -25,7 +25,8 @@ public class Link extends Home {
 	protected void goOn() throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		
-		String link = PropertiesConnection.getParameter(request, "claimUrl") + session.getAttribute("code");
+		PropertiesConnection pcon = new PropertiesConnection();
+		String link = pcon.getParameter("claimUrl") + session.getAttribute("code");
 
 		request.setAttribute("link", link);
 		request.setAttribute("balance", session.getAttribute("balance"));

@@ -19,7 +19,8 @@ public class Error extends Home {
 	
 	@Override
 	protected void goOn() throws ServletException, IOException {
-		String serverUrl = PropertiesConnection.getParameter(request, "myselfUrl");
+		PropertiesConnection pcon = new PropertiesConnection();
+		String serverUrl = pcon.getParameter("myselfUrl");
 		int status = response.getStatus();
 		String message = "";
 		switch (status) {

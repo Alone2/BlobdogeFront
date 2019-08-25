@@ -23,7 +23,8 @@ public class Home extends HttpServlet {
 		this.request = request;
 		this.response = response;
 		
-		String theme = getTheme(request.getCookies(), PropertiesConnection.getParameter(request, "defaultTheme"));
+		PropertiesConnection pcon = new PropertiesConnection();
+		String theme = getTheme(request.getCookies(), pcon.getParameter("defaultTheme"));
 		String errorJs = getErrorJS(request.getSession());
 		
 		StringBuffer reqUrl = request.getRequestURL();

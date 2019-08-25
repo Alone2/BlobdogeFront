@@ -2,6 +2,7 @@ package ch.blobber.blobdogefront.connection;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 public class CookieConnection {
 	public static String getCookie(String cookie, HttpServletRequest req) {
