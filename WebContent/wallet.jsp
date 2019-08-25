@@ -93,7 +93,7 @@
 							</script>
                 		 <br><b>Dogecoin Address:</b><br>
                 		 <small>${address}</small><br><br><br>
-                		 Transaction time takes about 1 minute. Reload the page 1 minute after you sent dogecoin to this address to see if your transaction was successful. (Address changes as soon as the transaction starts processing)
+                		 Transaction time takes about 1 minute. Reload the page 1 minute after you've sent dogecoin to this address to see if your transaction was successful. (Address changes as soon as the transaction starts processing)
                 	</div>
                 	<div id="tab2" class="nodisplay center">
                 		<b>Your Balance: </b><br>
