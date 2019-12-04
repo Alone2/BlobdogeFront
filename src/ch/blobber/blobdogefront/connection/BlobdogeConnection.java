@@ -1,18 +1,24 @@
 package ch.blobber.blobdogefront.connection;
 
-import java.net.*;
 import java.nio.charset.StandardCharsets;
-import java.util.Base64;
+
+import javax.net.ssl.HttpsURLConnection;
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.TrustManager;
+import javax.net.ssl.X509TrustManager;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.*;
+import java.net.URL;
+import java.net.URLEncoder;
 
 public class BlobdogeConnection {
 	String output;
 	String web_url;
+	String web_port;
 	String token;
 	public String balance;
 	public String address;
@@ -21,29 +27,38 @@ public class BlobdogeConnection {
 	public BlobdogeConnection(String token) {
 		PropertiesConnection pcon = new PropertiesConnection();
 		web_url = pcon.getParameter("serverUrl");
+		web_port = pcon.getParameter("serverPort");
 		this.token = token;
 	}
 
 	private String get(String url_extention, JSONArray args) throws Exception {
-		URL url = new URL(web_url + url_extention);
-
-		URLConnection con = url.openConnection();
-		HttpURLConnection http = (HttpURLConnection) con;
-
-		http.setRequestMethod("POST");
-		http.setDoOutput(true);
-
-		String outStr = toParameter(args);
-		byte[] out = outStr.getBytes(StandardCharsets.UTF_8);
-
-		con.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
-
-		http.connect();
-		try (OutputStream os = http.getOutputStream()) {
-			os.write(out);
-		}
+	// stolen from : 
+	// https://stackoverflow.com/questions/1201048/allowing-java-to-use-an-untrusted-certificate-for-ssl-https-connection#1201102
+	TrustManager[] trustAllCerts = new TrustManager[]{
+		    new X509TrustManager() {
+		        public java.security.cert.X509Certificate[] getAcceptedIssuers() {
+		            return null;
+		        }
+		        public void checkClientTrusted(
+		            java.security.cert.X509Certificate[] certs, String authType) {
+		        }
+		        public void checkServerTrusted(
+		            java.security.cert.X509Certificate[] certs, String authType) {
+		        }
+		    }
+		};
+		// Install the all-trusting trust manager
+		SSLContext sc = SSLContext.getInstance("SSL");
+		sc.init(null, trustAllCerts, new java.security.SecureRandom());
+		HttpsURLConnection.setDefaultSSLSocketFactory(sc.getSocketFactory());
+	
+			
+		URL url = new URL(web_url + url_extention + "?" +  toParameter(args));
+		
+		HttpsURLConnection https = (HttpsURLConnection)url.openConnection();
+		
 		StringBuilder content;
-		try (BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()))) {
+		try (BufferedReader in = new BufferedReader(new InputStreamReader(https.getInputStream()))) {
 
 			String line;
 			content = new StringBuilder();

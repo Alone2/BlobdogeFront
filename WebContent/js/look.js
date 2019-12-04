@@ -67,7 +67,7 @@ window.onresize = function (event) {
 }
 
 function stuffToTheRightPlace() {
-    document.getElementById("contentHolder").style.height = window.innerHeight - 102 + "px";
+    document.getElementById("contentHolder").style.height = window.innerHeight - 103 + "px";
     document.getElementById("contentHolder").style.paddingLeft = (window.innerWidth- 1200)/2 + "px";
     document.getElementById("contentHolder").style.paddingRight = (window.innerWidth- 1200)/2 + "px";
     if ((window.innerWidth - 1200)/2 < 20) {

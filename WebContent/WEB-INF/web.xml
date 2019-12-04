@@ -58,6 +58,22 @@
 		<servlet-name>sendToURL</servlet-name>
 		<servlet-class>ch.blobber.blobdogefront.servlets.post.SendToURL</servlet-class>
 	</servlet>
+	
+	
+	<servlet>
+		<servlet-name>homeNews</servlet-name>
+		<servlet-class>ch.blobber.blobdogefront.servlets.content.HomeNews</servlet-class>
+	</servlet>
+	
+	<servlet>
+		<servlet-name>news</servlet-name>
+		<servlet-class>ch.blobber.blobdogefront.servlets.content.News</servlet-class>
+	</servlet>
+	
+	<servlet>
+		<servlet-name>picture</servlet-name>
+		<servlet-class>ch.blobber.blobdogefront.servlets.content.Picture</servlet-class>
+	</servlet>
 
 	
 	<filter>
