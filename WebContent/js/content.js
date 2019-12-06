@@ -14,7 +14,6 @@ function getHome() {
             new_dat = data[i]
             $("#blobs").html($("#blobs").html() + '<div class="content"><small class="date">' + new_dat["date"] + '</small><img class="blobimage" src="' + new_dat["pic"] + '" alt=""><h3>' + new_dat["header"] + "</h3><br />" + new_dat["message"] + "<br /><br />")
         }
-
     });
 }
 

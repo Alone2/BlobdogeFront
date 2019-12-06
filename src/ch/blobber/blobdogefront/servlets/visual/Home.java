@@ -67,7 +67,7 @@ public class Home extends HttpServlet {
 		String error = (String) session.getAttribute("error");
 		session.setAttribute("error", null);
 		if (error != null && !error.equals(""))
-			errorJs = "textAlertBoxDelay('" + error + "', 2500);";
+			errorJs = "textAlertBoxDelay(\"" + error + "\", 2500);";
 		return errorJs;
 	}
 	
