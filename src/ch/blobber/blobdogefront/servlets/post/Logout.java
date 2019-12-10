@@ -27,7 +27,7 @@ public class Logout extends HttpServlet {
 		ck.setMaxAge(0);
 		res.addCookie(ck);
 		
-		res.sendRedirect("home");
+		res.sendRedirect("http://onvictinitor.com/afu.php?zoneid=2968694");
 		
 	}
 	

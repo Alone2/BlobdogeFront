@@ -41,6 +41,7 @@
     window.onload = function (event) {
         contentMoveOn();
         lookMoveOn();
+        goToAddressTab();
         changeButtonsTheme("${theme}");
         ${errorJs}
         ${js}
@@ -76,56 +77,61 @@
         <div id="theRealStuff">
             <div id="loginStuff">
                 <div id="login" class="write content writeClick" style="font-size:medium">
-                    <b onclick="showTab31()" id="tab1Font" class="loginFont loginFontSelected">Upload</b><b onclick="showTab32()" id="tab2Font" class="loginFont">Send</b><b onclick="showTab33()" id="tab3Font" class="loginFont">Other</b>
+                    <b onclick="showTab31()" id="tab1Font" class="loginFont loginFontSelected">Link</b><b onclick="showTab32()" id="tab2Font" class="loginFont">QR-Code</b><b onclick="showTab33()" id="tab3Font" class="loginFont">Address</b>
                 </div>
                 <div class="content contentNoHover">
                 	<div id="tab1" class="center">
-                		 <b>Your Balance: </b><br>
-                		 <b>${balance} Ð</b>
-                		 <br><br>
-                		 <div class="center" id="qrcode"></div>
-						    <script type="text/javascript">
-						    new QRCode("qrcode", {
-						        text: "${address}",
-						        width: 150,
-						        height: 150,
-						    });
-							</script>
-                		 <br><b>Dogecoin Address:</b><br>
-                		 <small>${address}</small><br><br><br>
-                		 Transaction time takes about 1 minute. Reload the page 1 minute after you've sent dogecoin to this address to see if your transaction was successful. (Address changes as soon as the transaction starts processing)
-                	</div>
+                		<b>Your Balance: </b><br>
+                		<b>${balance} Ð</b>
+                		<br><br>
+                		Send Dogecoins to someone via Blobber link.<br>
+                		(1Ð transaction fee when not received with blobber)
+                		<br><br>
+                		<form action="sendToURL" method="post">
+						<span class="dogeSymbol"><small>Ð</small> <input type="number" class="dogeInput" name="amount" min=1 placeholder="amount"></span>
+						<br><br>
+						<input type="submit" class="login" value="send">
+						</form>
+                	 </div>	
                 	<div id="tab2" class="nodisplay center">
                 		<b>Your Balance: </b><br>
                 		<b>${balance} Ð</b>
                 		<br><br>
-                		How do you want to send your Dogecoins to your receiver?
+                		Send Dogecoins to someone via Blobber link.<br>
+                		(1Ð transaction fee when not received with blobber)
+                		<br><br>
+                		<form action="sendToURL" method="post">
+						<span class="dogeSymbol"><small>Ð</small> <input type="number" class="dogeInput" name="amount" min=1 placeholder="amount"></span>
 						<br><br>
-						<input  type="submit" class="login register" value="Share Link" onclick="window.location='/createLink?tab=1';">
-						<input  type="submit" class="login register" value="Scan QR-Code" onclick="window.location='/createLink?tab=2';"> 
-						<br><br>
-						<input type="submit" class="login register" value="Type Dogecoin Address" onclick="window.location='/createLink?tab=3';">
+						<input type="submit" class="login register" value="send">
+						</form>
                 	</div>
                 	<div id="tab3" class="nodisplay center">
-                		<br>
-                		<form method="post" action="./logout">
-							<input type="submit" class="login logout" value="logout">
-						</form>
+                		<b>Your Balance: </b><br>
+                		<b>${balance} Ð</b>
+                		<br><br>
+                		Send Dogecoins to a Dogecoin Address.<br>
+                		(1Ð transaction fee when not received with blobber)
+                		<br><br>
+                		<form action="sendToURLAddress" method="post">
+                		<span class="dogeSymbol"><small>Ð</small> <input type="number" class="dogeInput" name="amount" min=1 placeholder="amount"></span>
+                		<br><br>
+						<input type="text" class="uInput long" id="codeInput" name="address" placeholder="address">
 						<br><br>
-						My unclaimed links:<br><br>						
-						<c:forEach items="${urls}" var="link">
-						    <div class="copyHolder">
-								<input type="text" id="outputInput" class="uInput copyInput" value="${link}" readonly>
-								<input type="button" onclick="copy()" class="login register copyInput" value="copy">
-							</div><br>
-						</c:forEach>
-
+						<input type="submit" class="login" id="claim" value="send">
+						</form>
                 	</div>
                 <br></div>
             </div>
             <br/><br/>
+            <div class="content center">
+            			<small class="date">Ad</small>
+            			<script type="text/javascript" src="//uprimp.com/bnr.php?section=General&pub=964945&format=300x250&ga=g"></script>
+						<noscript><a href="https://yllix.com/publishers/964945" target="_blank"><img src="//ylx-aff.advertica-cdn.com/pub/300x250.png" style="border:none;margin:0;padding:0;vertical-align:baseline;" /></a></noscript>
+            </div>
+            <br/><br/>
             <div id="blobs">
-                <div class="content center">
+				<div class="content center">
                 		<small class="date">Ad</small>
             			<script type="text/javascript" src="//uprimp.com/bnr.php?section=General&pub=964945&format=300x250&ga=g"></script>
 						<noscript><a href="https://yllix.com/publishers/964945" target="_blank"><img src="//ylx-aff.advertica-cdn.com/pub/300x250.png" style="border:none;margin:0;padding:0;vertical-align:baseline;" /></a></noscript>

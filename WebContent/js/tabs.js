@@ -38,3 +38,14 @@ function showTab33() {
 	$("#tab2Font").removeClass("loginFontSelected");
 	$("#tab3Font").addClass("loginFontSelected");
 }
+
+function goToAddressTab() {
+	var t  = GetURLParameter("tab");
+	if (t == 1){
+		showTab31();
+	} else if (t == 2) {
+		showTab32();
+	} else if (t == 3) {
+		showTab33();
+	}
+}

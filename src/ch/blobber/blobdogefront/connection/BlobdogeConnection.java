@@ -212,5 +212,23 @@ public class BlobdogeConnection {
 
 		return o;
 	}
+	
+	public JSONObject sendToURLAddress(String amount, String address) throws Exception {
+		JSONArray a = new JSONArray();
+		a.put("token");
+		a.put(token);
+
+		a.put("amount");
+		a.put(amount);
+		
+		a.put("address");
+		a.put(amount);
+
+		String out;
+		out = this.get("sendURLAddress", a);
+		JSONObject o = new JSONObject(out);
+
+		return o;
+	}
 
 }

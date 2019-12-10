@@ -14,31 +14,29 @@ import javax.servlet.http.HttpSession;
 import org.json.JSONObject;
 
 import ch.blobber.blobdogefront.connection.BlobdogeConnection;
+import ch.blobber.blobdogefront.connection.CookieConnection;
 
 /**
  * Servlet implementation class login
  */
-@WebServlet("/sendToAddress")
-public class SendToAddress extends Login {
+@WebServlet("/sendToURLAddress")
+public class SendToURLAddress extends Login {
 	
 	public void doPost(HttpServletRequest req, HttpServletResponse res) throws IOException {
+		String amount = req.getParameter("amount");
 		String address = req.getParameter("address");
-		String code = req.getParameter("code");
 				
-		if (address == null || code == null) {
-			this.error(req, res, "wallet", "No address");
+		if (amount == null || "".equals(amount) || address == null) {
+			this.error(req, res, "wallet", "Field empty");
 			return;
 		}
 		
-		if (address.equals("")) {
-			this.error(req, res, "wallet", "No address");
-			return;
-		}
+		String token = CookieConnection.getCookie("token", req);
 				
-		BlobdogeConnection b = new BlobdogeConnection("");
+		BlobdogeConnection b = new BlobdogeConnection(token);
 		JSONObject out;
 		try {
-			out = b.sendToAddress(code, address);
+			out = b.sendToURLAddress(amount, address);
 		} catch (Exception e) {
 			e.printStackTrace();
 			this.error(req, res, "wallet", "Server-Error");
@@ -51,7 +49,7 @@ public class SendToAddress extends Login {
 		}
 		
 		this.error(req, res, "wallet", "Success!");
-		
+								
 	}
 
 }

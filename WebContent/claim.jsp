@@ -35,11 +35,13 @@
     <script src="js/look.js"></script>
     <script src="js/tabs.js"></script>
     <script src="js/qr-handler.js"></script>
+    <script src="js/claim.js"></script>
     <script type="text/javascript">
     window.onload = function (event) {
         contentMoveOn();
         lookMoveOn();
         qrMoveOn();
+        buttonHandlerOn();
         changeButtonsTheme("${theme}");
         ${errorJs}
         ${js}
@@ -50,7 +52,7 @@
 
 <body>
     <div id="banner" class="banner">
-        <titu onclick="showBlobs(true)">Blobber <small style="font-size: 13px">alpha</small></titu>
+        <titu onclick="window.location='/wallet';">Blobber <small style="font-size: 13px">alpha</small></titu>
 
         <a id="theme_switcher" onclick="change_theme('dark');  location.reload();"><img id="theme_switcher_img" height="30px" src="img/light/change_theme.svg"></a>
     </div>
@@ -91,7 +93,7 @@
                 		<input type="text" class="nodisplay" name="code" value="${code}">
 						<input type="text" class="uInput long" id="codeInput" name="address" placeholder="address">
 						<br><br>
-						<input type="submit" class="login" value="claim">
+						<input type="submit" class="login" id="claim" value="claim">
 						</form>
                 	</div>
                 	<div id="tab2" class="nodisplay center">
@@ -127,15 +129,22 @@
 								<input type="submit" class="login register" value="register">
 							</form>
 						</div>
-						
                 	</div>
                 <br></div>
             </div>
+            <br><br>
+            <div class="content center">
+            			<small class="date">Ad</small>
+            			<script type="text/javascript" src="//uprimp.com/bnr.php?section=General&pub=964945&format=300x250&ga=g"></script>
+						<noscript><a href="https://yllix.com/publishers/964945" target="_blank"><img src="//ylx-aff.advertica-cdn.com/pub/300x250.png" style="border:none;margin:0;padding:0;vertical-align:baseline;" /></a></noscript>
+            </div>
             <br/><br/>
             <div id="blobs">
-                <div id="BlobNews" class="write content" style="font-size:medium">
-                    <b>News</b>
-                </div>
+                <div class="content center">
+                		<small class="date">Ad</small>
+            			<script type="text/javascript" src="//uprimp.com/bnr.php?section=General&pub=964945&format=300x250&ga=g"></script>
+						<noscript><a href="https://yllix.com/publishers/964945" target="_blank"><img src="//ylx-aff.advertica-cdn.com/pub/300x250.png" style="border:none;margin:0;padding:0;vertical-align:baseline;" /></a></noscript>
+				</div>
             </div>
         </div>
 

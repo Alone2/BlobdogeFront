@@ -46,7 +46,7 @@
 
 <body>
     <div id="banner" class="banner">
-        <titu onclick="showBlobs(true)">Blobber <small style="font-size: 13px">alpha</small></titu>
+        <titu onclick="window.location='/wallet';">Blobber <small style="font-size: 13px">alpha</small></titu>
 
         <a id="theme_switcher" onclick="change_theme('dark');  location.reload();"><img id="theme_switcher_img" height="30px" src="${serverUrl}img/light/change_theme.svg"></a>
     </div>

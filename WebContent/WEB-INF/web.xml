@@ -45,6 +45,12 @@
 	</servlet>
 	
 	<servlet>
+		<servlet-name>createlink</servlet-name>
+		<servlet-class>ch.blobber.blobdogefront.servlets.visual.CreateLink</servlet-class>
+	</servlet>
+	
+	
+	<servlet>
 		<servlet-name>logout</servlet-name>
 		<servlet-class>ch.blobber.blobdogefront.servlets.post.Logout</servlet-class>
 	</servlet>
