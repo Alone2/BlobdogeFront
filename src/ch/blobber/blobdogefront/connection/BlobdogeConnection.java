@@ -222,7 +222,7 @@ public class BlobdogeConnection {
 		a.put(amount);
 		
 		a.put("address");
-		a.put(amount);
+		a.put(address);
 
 		String out;
 		out = this.get("sendURLAddress", a);

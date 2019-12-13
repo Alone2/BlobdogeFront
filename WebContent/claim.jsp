@@ -84,7 +84,7 @@
                 		<br>
                 		<b>You can claim: </b>
                 		 ${balance} Ð<br><br>
-                		Move to a Dogecoin address.
+                		Move to a Dogecoin address.<br>
                 		<br><br>
                 		<video id="preview" class="nodisplay"></video>
                 		<input type="button" class="login register nodisplay" id="camButton" class="nodisplay" onclick="CamOn()" value="scan qr-code with camera">

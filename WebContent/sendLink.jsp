@@ -111,7 +111,7 @@
                 		<b>${balance} Ð</b>
                 		<br><br>
                 		Send Dogecoins to a Dogecoin Address.<br>
-                		(1Ð transaction fee when not received with blobber)
+                		(You pay 1Ð transaction fee when not received with blobber)
                 		<br><br>
                 		<form action="sendToURLAddress" method="post">
                 		<span class="dogeSymbol"><small>Ð</small> <input type="number" class="dogeInput" name="amount" min=1 placeholder="amount"></span>
