@@ -185,6 +185,7 @@ body {
 }
 
 input {
+	-webkit-appearance: none;
     border: 0px;
     border-style: solid;
     border-bottom-width: 1px;
@@ -249,6 +250,8 @@ div.sticky {
 
 .dogeInput {
 	text-align: right;
+	-moz-appearance: textfield;
+	
 }
 
 .dogeSymbol {

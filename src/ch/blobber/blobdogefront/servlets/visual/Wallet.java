@@ -55,6 +55,7 @@ public class Wallet extends Home {
 		}
 		request.setAttribute("balance", b.balance);
 		request.setAttribute("address", b.address);
+		request.setAttribute("devtoken", b.devtoken);
 		request.setAttribute("urls", createURLs(b.codes));
 		
         request.getRequestDispatcher("wallet.jsp").forward(request, response);

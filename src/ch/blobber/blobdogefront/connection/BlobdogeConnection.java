@@ -21,6 +21,7 @@ public class BlobdogeConnection {
 	String web_port;
 	String token;
 	public String balance;
+	public String devtoken;
 	public String address;
 	public JSONArray codes;
 
@@ -53,9 +54,15 @@ public class BlobdogeConnection {
 		HttpsURLConnection.setDefaultSSLSocketFactory(sc.getSocketFactory());
 	
 			
-		URL url = new URL(web_url + url_extention + "?" +  toParameter(args));
+		URL url = new URL(web_url + url_extention);
 		
 		HttpsURLConnection https = (HttpsURLConnection)url.openConnection();
+		
+		https.setDoOutput(true);
+		DataOutputStream wr = new DataOutputStream(https.getOutputStream());
+		wr.writeBytes(toParameter(args));
+		wr.flush();
+		wr.close();
 		
 		StringBuilder content;
 		try (BufferedReader in = new BufferedReader(new InputStreamReader(https.getInputStream()))) {
@@ -136,13 +143,17 @@ public class BlobdogeConnection {
 		if (!out.getString("error").equals("none")) {
 			balance = out.getString("error");
 			address = out.getString("error");
+			devtoken = out.getString("error");
+			System.err.println(out.getString("error"));
 			return false;
 		}
 		try {
 			balance = String.valueOf(out.getFloat("balance"));
 			address = out.getString("address");
 			codes = out.getJSONArray("codes");
+			devtoken = out.getString("devtoken");
 		} catch (Exception e) {
+			e.printStackTrace();
 			return false;
 		}
 		return true;

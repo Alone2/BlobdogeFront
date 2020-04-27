@@ -77,7 +77,9 @@
         <div id="theRealStuff">
             <div id="loginStuff">
                 <div id="login" class="write content writeClick" style="font-size:medium">
-                    <b onclick="showTab31()" id="tab1Font" class="loginFont loginFontSelected">Link</b><b onclick="showTab32()" id="tab2Font" class="loginFont">QR-Code</b><b onclick="showTab33()" id="tab3Font" class="loginFont">Address</b>
+                    <b onclick="showTab31()" id="tab1Font" class="loginFont loginFontSelected">Link</b>
+                    <!-- <b onclick="showTab32()" id="tab2Font" class="loginFont">QR-Code</b> -->
+                    <b onclick="showTab33()" id="tab3Font" class="loginFont">Address</b>
                 </div>
                 <div class="content contentNoHover">
                 	<div id="tab1" class="center">

@@ -102,7 +102,7 @@
                 		How do you want to send your Dogecoins to your receiver?
 						<br><br>
 						<input  type="submit" class="login register" value="Share Link" onclick="window.location='/createLink?tab=1';">
-						<input  type="submit" class="login register" value="Scan QR-Code" onclick="window.location='/createLink?tab=2';"> 
+						<!-- <input  type="submit" class="login register" value="Scan QR-Code" onclick="window.location='/createLink?tab=2';"> -->
 						<br><br>
 						<input type="submit" class="login register" value="Type Dogecoin Address" onclick="window.location='/createLink?tab=3';">
                 	</div>
@@ -119,7 +119,8 @@
 								<input type="button" onclick="copy()" class="login register copyInput" value="copy">
 							</div><br>
 						</c:forEach>
-
+						<br><br>	
+						<span><small>Dev-Token:<br>${devtoken}</small></span>
                 	</div>
                 <br></div>
             </div>
