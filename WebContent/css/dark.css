@@ -7,6 +7,15 @@ body {
     color: rgb(215, 218, 220);
 }
 
+.alink:link, .alink:visited {
+  background-color: rgb(51, 102, 153);
+  color: white;
+}
+
+.alink:hover, .alink:active {
+  background-color: rgb(38, 77, 115);
+}
+
 .pointerStyle {
 }
 
